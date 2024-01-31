@@ -1,0 +1,19 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = "mysql://root:@127.0.0.1:3306/basic"
+}
+
+enum Status {
+    completed
+    uncompleted
+}
+
+model tasks {
+    id     Int    @id @default(autoincrement())
+    name   String @db.Char(255)
+    status Status
+}
