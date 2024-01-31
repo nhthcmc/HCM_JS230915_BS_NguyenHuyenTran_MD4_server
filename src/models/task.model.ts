@@ -14,7 +14,8 @@ export const taskModel = {
     create: async (data: Task) => {
         let task = await prisma.tasks.create({
             data: {
-                ...data
+                ...data,
+                status: 'uncompleted'
             }
         })
         return {
