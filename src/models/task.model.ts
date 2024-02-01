@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { Task } from "../common/interface";
+import { createTask, updateTask } from "../common/interface";
 const prisma = new PrismaClient()
 
 export const taskModel = {
@@ -11,7 +11,7 @@ export const taskModel = {
             data
         }
     },
-    create: async (data: Task) => {
+    create: async (data: createTask) => {
         let task = await prisma.tasks.create({
             data: {
                 ...data,
@@ -24,7 +24,7 @@ export const taskModel = {
             data: task
         }
     },
-    update: async (id: number, task: Task) => {
+    update: async (id: number, task: updateTask) => {
         let data = await prisma.tasks.update({
             where: {
                 id
